@@ -38,10 +38,11 @@ router.get('/', function(req, res) {
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use(morgan('dev'));
+
+//app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(checkLoginToken(dataLoader));
-app.use(cors());
+// app.use(checkLoginToken(dataLoader));
+//app.use(cors());
 app.use('/api', router);
 
 app.use('/auth', authController(dataLoader));
