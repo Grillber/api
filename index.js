@@ -7,7 +7,7 @@ const mysql       = require('promise-mysql');
 const bodyParser  = require('body-parser'); 
 
 // Data loader
-const DashboardlyDataLoader = require('./lib/grillber_api.js');
+const GrillberDataLoader = require('./lib/grillber_api.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
@@ -24,7 +24,7 @@ const connection = mysql.createPool({
   user: 'root',
   database: 'grillber'
 });
-const dataLoader = new DashboardlyDataLoader(connection);
+const dataLoader = new GrillberDataLoader(connection);
 
 // Routes for API
 var router = express.Router();
