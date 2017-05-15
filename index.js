@@ -14,6 +14,7 @@ const authController = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
