@@ -11,8 +11,8 @@ const GrillberDataLoader = require('./lib/grillber_api.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
-const boardsController = require('./controllers/bookings.js');
-const bookmarksController = require('./controllers/products.js');
+const bookingsController = require('./controllers/bookings.js');
+const productsController = require('./controllers/products.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
