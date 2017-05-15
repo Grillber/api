@@ -1,23 +1,47 @@
 
-// Dependencies
-const express = require('express');
-const bodyParser = require('body-parser');
+//server.js
 
-// Database / data loader initialization
-// const connection = mysql.createPool({
-//   user: 'root',
-//   database: ''
-// });
-// const dataLoader = new DATABASENAME(connection);
+// Dependencies
+const express     = require('express');
+const bodyParser  = require('body-parser');
+
+
+//DB connection 
+var knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host : 'localhost',
+    user : 'uroot',
+    password : '',
+    database : 'myapp_test'
+  }
+});
 
 // Express
-const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+const app = express.Router();
 
-app.get('/', (req, res) => {
-    res.send('working');
-}); 
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });   
+});
+
+// more routes for our API will happen here
+
+// REGISTER OUR ROUTES -------------------------------
+// all of our routes will be prefixed with /api
+app.use('/api', router);
+
+
+
+
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+
+// app.get('/', (req, res) => {
+//     res.send('working');
+// }); 
+
+
+
 
 
 // Server start
