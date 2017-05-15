@@ -1,0 +1,48 @@
+{
+  "name": "grillber-api",
+  "version": "1.0.0",
+  "description": "ExpressJS and MySQL-based API for renting grill equipment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grillber/grillber-api"
+  },
+  "keywords": [],
+  "author": "Denys Fedas <denisvfedas@gmail.com>, Mike Dagenais <mike.p.dagenais@gmail.com>, Andrew Gulik <>, Christopher Latchman <>",
+  "license": "ISC",
+  "homepage": "https://github.com/Grillber/grillber-api#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bcrypt-as-promised": "^1.1.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knex": "^0.13.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.13.0",
+    "promise-mysql": "^3.0.1",
+    "validate.js": "^0.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "nodemon": "^1.11.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "comma-dangle": 0,
+      "consistent-return": 0,
+      "no-param-reassign": 0,
+      "no-underscore-dangle": 0,
+      "no-shadow": 0,
+      "no-console": 0,
+      "no-plusplus": 0,
+      "object-shorthand": 0,
+      "arrow-body-style": 0
+    }
+  }
+}
