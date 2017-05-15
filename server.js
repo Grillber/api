@@ -22,5 +22,5 @@ app.get('/', (req, res) => {
 
 // Server start
 app.listen(1337);
-console.log('API is running on port 1337')
+console.log('API is running on port 1337');
 
