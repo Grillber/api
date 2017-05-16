@@ -34,11 +34,11 @@ CREATE TABLE products (
 CREATE TABLE  bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userId INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-  dropDate TIMESTAMP,
-  pickUpDate TIMESTAMP,
+  dropDate TIMESTAMP NULL DEFAULT NULL,
+  pickUpDate TIMESTAMP NULL DEFAULT NULL,
   sum DECIMAL(13,2),
   location VARCHAR(50),
-  status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened',
+  status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened'
 );
 
 CREATE TABLE booked_products (

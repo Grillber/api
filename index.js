@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 
 //app.use(morgan('dev'));
 app.use(bodyParser.json());
-// app.use(checkLoginToken(dataLoader));
+//app.use(checkLoginToken(dataLoader));
 //app.use(cors());
 app.use('/api', router);
 
