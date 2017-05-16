@@ -1,23 +1,19 @@
-//Server
+const express = require('express');     //call express
+const mysql = require('promise-mysql');
 
-// Packages/Dependencies 
-const express     = require('express');     //call express
-const app         = express();              //Define app using express
-const mysql       = require('promise-mysql');
-const bodyParser  = require('body-parser'); 
+// Express middleware
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const checkLoginToken = require('./lib/check-login-token.js');
+const cors = require('cors');
 
 // Data loader
 const GrillberDataLoader = require('./lib/grillber_api.js');
 
 // Controllers
-const authController     = require('./controllers/auth.js');
+const authController = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 1337; 
 
 // Database / data loader initialization
 const connection = mysql.createPool({
@@ -26,30 +22,27 @@ const connection = mysql.createPool({
 });
 const dataLoader = new GrillberDataLoader(connection);
 
-// Routes for API
-var router = express.Router();
 
-
-router.get('/', function(req, res) {
-    res.json({ message: 'Grillber API is working' });   
-});
-
-// more routes for our API will happen here
-
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-
+// Express initialization
+const app = express();              //Define app using express
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
 app.use(cors());
-app.use('/api', router);
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use('/api', router);
+
 
 app.use('/auth', authController(dataLoader));
 app.use('/bookings', bookingsController(dataLoader));
 app.use('/products', productsController(dataLoader));
 
-// Server start
-app.listen(port);
-console.log('API is running on port: ' + port);
-
+// Start the server
+const port = process.env.PORT || 3000;//1337;
+app.listen(port, () => {
+  if (process.env.C9_HOSTNAME) {
+    console.log(`Web server is listening on https://${process.env.C9_HOSTNAME}`);
+  } else {
+    console.log(`Web server is listening on http://localhost:${port}`);
+  }
+});

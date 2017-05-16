@@ -10,9 +10,8 @@ module.exports = (dataLoader) => {
           page: req.query.page,
           limit: req.query.count
       })
-      .then(data => {
-          console.log(data);
-          data.status(200).json()})
+      .then(data => console.log(data))
+      .then(data => data.status(200).json())
       .catch(err => err.status(400).json(err));
   });
   
