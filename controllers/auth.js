@@ -1,8 +1,6 @@
-const express = require('express');
-
+const express      = require('express');
 const onlyLoggedIn = require('../lib/only-logged-in');
-
-const md5 = require('md5');
+const md5          = require('md5');
 
 module.exports = (dataLoader) => {
   const authController = express.Router();
@@ -53,7 +51,6 @@ module.exports = (dataLoader) => {
   // Retrieve current user
   //Gravatar beeng sent here
   authController.get('/me', onlyLoggedIn, (req, res) => {
-    // TODO: this is up to you to implement :)
     console.log(req.body, "look for token");
     dataLoader.getUserFromSession(req.sessionToken)
     .then(function(user){ 
