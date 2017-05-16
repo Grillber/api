@@ -1,5 +1,4 @@
-const express = require('express');
-
+const express      = require('express');
 const onlyLoggedIn = require('../lib/only-logged-in');
 
 module.exports = (dataLoader) => {
