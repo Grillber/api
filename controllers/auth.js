@@ -5,7 +5,6 @@ const md5          = require('md5');
 module.exports = (dataLoader) => {
   const authController = express.Router();
   
-
   // Create a new user (signup)
   authController.post('/users', (req, res) => {
     // console.log(req.body);
@@ -66,7 +65,6 @@ module.exports = (dataLoader) => {
     //res.status(500).json({ error: 'not implemented' });
 
   });
-  
   
 
   return authController;
