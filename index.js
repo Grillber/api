@@ -10,7 +10,7 @@ const bodyParser  = require('body-parser');
 const GrillberDataLoader = require('./lib/grillber_api.js');
 
 // Controllers
-const authController = require('./controllers/auth.js');
+const authController     = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
 
