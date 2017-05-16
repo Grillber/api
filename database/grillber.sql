@@ -25,7 +25,7 @@ CREATE TABLE products (
   id INT AUTO_INCREMENT PRIMARY KEY,
   category VARCHAR(100) NOT NULL,
   title VARCHAR(100) NOT NULL,
-  description VARCHAR(100),
+  description VARCHAR(1000),
   priceDaily DECIMAL(13,2),
   priceWeekly DECIMAL(13,2),
   availability BOOLEAN
