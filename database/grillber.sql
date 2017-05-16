@@ -10,7 +10,7 @@ CREATE TABLE users (
   password VARCHAR(60) NOT NULL,
   admin BOOLEAN NOT NULL DEFAULT 0,
   name VARCHAR(100) NOT NULL,
-  phone VARCHAR(12)
+  phone VARCHAR(12),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -34,11 +34,11 @@ CREATE TABLE products (
 CREATE TABLE  bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userId INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-  dropDate TIMESTAMP,
+  dropDate TIMESTAMP NULL DEFAULT NULL,
   pickUpDate TIMESTAMP,
   sum DECIMAL(13,2),
   location VARCHAR(50),
-  status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened',
+  status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened'
 );
 
 CREATE TABLE booked_products (
