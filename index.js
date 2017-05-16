@@ -1,18 +1,18 @@
 const express = require('express');     //call express
-const mysql = require('promise-mysql');
+const mysql   = require('promise-mysql');
 
 // Express middleware
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
+const bodyParser      = require('body-parser');
+const morgan          = require('morgan');
 const checkLoginToken = require('./lib/check-login-token.js');
-const cors = require('cors');
-const router = require('router');
+const cors            = require('cors');
+const router          = require('router');
 
 // Data loader
 const GrillberDataLoader = require('./lib/grillber_api.js');
 
 // Controllers
-const authController = require('./controllers/auth.js');
+const authController     = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
 
