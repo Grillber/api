@@ -11,7 +11,9 @@ module.exports = (dataLoader) => {
     // console.log(req.body);
     dataLoader.createUser({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      name: req.body.name,
+      phone: req.body.phone
     })
     .then(user => res.status(201).json(user))
     .catch(function(err){ 

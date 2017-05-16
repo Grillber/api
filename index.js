@@ -39,7 +39,8 @@ app.use('/bookings', bookingsController(dataLoader));
 app.use('/products', productsController(dataLoader));
 
 // Start the server
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT || 8080;//1337;
 app.listen(port, () => {
   if (process.env.C9_HOSTNAME) {
     console.log(`Web server is listening on https://${process.env.C9_HOSTNAME}`);
