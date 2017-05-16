@@ -22,6 +22,7 @@ const connection = mysql.createPool({
 });
 const dataLoader = new GrillberDataLoader(connection);
 
+
 // Express initialization
 const app = express();              //Define app using express
 app.use(morgan('dev'));
@@ -30,6 +31,7 @@ app.use(checkLoginToken(dataLoader));
 app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/api', router);
+
 
 app.use('/auth', authController(dataLoader));
 app.use('/bookings', bookingsController(dataLoader));
