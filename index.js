@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const checkLoginToken = require('./lib/check-login-token.js');
 const cors = require('cors');
+const router = require('router');
 
 // Data loader
 const GrillberDataLoader = require('./lib/grillber_api.js');
