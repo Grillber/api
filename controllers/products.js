@@ -11,9 +11,8 @@ module.exports = (dataLoader) => {
           page: req.query.page,
           limit: req.query.count
       })
-      .then(data => console.log(data))
-      .then(data => data.status(200).json())
-      .catch(err => err.status(400).json(err));
+      .then(data => res.status(200).json(data))
+      .catch(err => res.status(400).json(err));
   });
   
   return productsController;
