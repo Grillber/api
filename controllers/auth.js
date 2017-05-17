@@ -43,8 +43,8 @@ module.exports = (dataLoader) => {
       .then(() => res.status(204).end())
       .catch(err => res.status(400).json(err));
     } else {
-      // console.log(req.sessionToken, "req session token");
-      // console.log(req.body, "req body");
+      console.log(req.sessionToken, "req session token");
+      console.log(req.body, "req body");
       res.status(401).json({ error: 'Invalid session token' });
     }
   });
@@ -52,20 +52,20 @@ module.exports = (dataLoader) => {
 
   // Retrieve current user
   //Gravatar beeng sent here
-  authController.get('/me', onlyLoggedIn, (req, res) => {
-    console.log(req.body, "look for token");
-    dataLoader.getUserFromSession(req.sessionToken)
-    .then(function(user){ 
-      user.avatarUrl = 'https://www.gravatar.com/avatar/' + md5(user.users_email.toLowerCase().trim());
-      //console.log(user);
-      return user;
-      } 
-    )
-    .then(user => res.status(201).json(user))
-    .catch(err => res.status(400).json(err));
-    //res.status(500).json({ error: 'not implemented' });
+  // authController.get('/me', onlyLoggedIn, (req, res) => {
+  //   console.log(req.body, "look for token");
+  //   dataLoader.getUserFromSession(req.sessionToken)
+  //   .then(function(user){ 
+  //     user.avatarUrl = 'https://www.gravatar.com/avatar/' + md5(user.users_email.toLowerCase().trim());
+  //     //console.log(user);
+  //     return user;
+  //     } 
+  //   )
+  //   .then(user => res.status(201).json(user))
+  //   .catch(err => res.status(400).json(err));
+  //   //res.status(500).json({ error: 'not implemented' });
 
-  });
+  // });
   
   
 
