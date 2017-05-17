@@ -50,7 +50,7 @@ module.exports = (dataLoader) => {
 
 
   // Retrieve current user
-  //Gravatar beeng sent here
+  //Gravatar being sent here
   // authController.get('/me', onlyLoggedIn, (req, res) => {
   //   console.log(req.body, "look for token");
   //   dataLoader.getUserFromSession(req.sessionToken)
