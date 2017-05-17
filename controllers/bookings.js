@@ -10,6 +10,7 @@ module.exports = (dataLoader) => {
     dataLoader.createOrder({
       dropDate: req.body.dropDate,
       pickUpDate: req.body.pickUpDate,
+      sum: req.body.orderTotal,
       location: req.body.location
     })
      .then(data => res.json(data))
