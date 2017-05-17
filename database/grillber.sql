@@ -30,7 +30,7 @@ CREATE TABLE products (
   imageOpenUrl VARCHAR(100),
   priceDaily DECIMAL(13,2),
   priceWeekly DECIMAL(13,2),
-  availability BOOLEAN DEFAULT 1
+  available BOOLEAN DEFAULT 1
 );
 
 CREATE TABLE  bookings (
@@ -38,7 +38,7 @@ CREATE TABLE  bookings (
   userId INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
   dropDate TIMESTAMP NULL DEFAULT NULL,
   pickUpDate TIMESTAMP,
-  sum DECIMAL(13,2),
+  bookingTotal DECIMAL(13,2),
   location VARCHAR(50),
   status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened'
 );
