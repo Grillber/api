@@ -31,8 +31,6 @@ app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
 app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: true }));
-// app.use('/api', router);
-
 
 app.use('/auth', authController(dataLoader));
 app.use('/bookings', bookingsController(dataLoader));

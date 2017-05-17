@@ -6,8 +6,9 @@ module.exports = (dataLoader) => {
   
 
 //Create Order
-  bookingsController.post('/placeOrder', (req, res) => {
-    dataLoader.createOrder({
+  bookingsController.post('/', onlyLoggedIn, (req, res) => {
+    console.log(req.body.location);
+    dataLoader.createBookings({
       dropDate: req.body.dropDate,
       pickUpDate: req.body.pickUpDate,
       sum: req.body.orderTotal,
