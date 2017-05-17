@@ -43,8 +43,8 @@ module.exports = (dataLoader) => {
       .then(() => res.status(204).end())
       .catch(err => res.status(400).json(err));
     } else {
-      console.log(req.sessionToken, "req session token");
-      console.log(req.body, "req body");
+      //console.log(req.sessionToken, "req session token");
+      //console.log(req.body, "req body");
       res.status(401).json({ error: 'Invalid session token' });
     }
   });
