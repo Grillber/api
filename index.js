@@ -29,7 +29,12 @@ const app = express();              //Define app using express
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
-app.use(cors());
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth', authController(dataLoader));
@@ -38,7 +43,9 @@ app.use('/bookings', authController(dataLoader));
 
 // Start the server
 
+
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   if (process.env.C9_HOSTNAME) {
     console.log(`Web server is listening on https://${process.env.C9_HOSTNAME}`);

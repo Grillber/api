@@ -11,7 +11,8 @@ module.exports = (dataLoader) => {
     dataLoader.createUser({
       email: req.body.email,
       password: req.body.password,
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       phone: req.body.phone
     })
     .then(user => res.status(201).json(user))
