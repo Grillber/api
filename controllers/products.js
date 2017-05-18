@@ -17,9 +17,8 @@ module.exports = (dataLoader) => {
   // Return a list of available equipment
   productsController.get('/availableProducts', (req, res) => {
     dataLoader.getAvailableProduct({
-      //requested date, product, drop zone
+      date: req.query.date
     })
-    .then(console.log(req.query))
     .then(data => res.status(200).json(data))
     .catch(err => res.status(400).jason(err));
   });
