@@ -4,7 +4,6 @@ const md5          = require('md5');
 
 module.exports = (dataLoader) => {
   const authController = express.Router();
-  console.log("TOP")
   // Create a new user (signup)
   authController.post('/users', (req, res) => {
     // console.log(req.body);
@@ -50,7 +49,6 @@ module.exports = (dataLoader) => {
 
   // Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     dataLoader.getUserFromSession(req.sessionToken)
     .then((user) => { 
       console.log(user);

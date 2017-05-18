@@ -4,6 +4,16 @@ const onlyLoggedIn = require('../lib/only-logged-in');
 module.exports = (dataLoader) => {
   const bookingsController = express.Router();
   
+  //Retrieve previous orders
+  bookingsController.get('/', onlyLoggedIn, (req, res) => {
+    dataLoader.getAllBookings({
+      page: req.query.page,
+      limit: req.query.count
+    }) 
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+  });   
+
 
 //Create Booking
   bookingsController.post('/new', onlyLoggedIn, (req, res) => {
@@ -18,15 +28,7 @@ module.exports = (dataLoader) => {
      .catch(err => res.status(400).json(err));
   });
   
-  //Retrieve previous orders
-  bookingsController.get('/', onlyLoggedIn, (req, res) => {
-    dataLoader.getAllBookings({
-      page: req.query.page,
-      limit: req.query.count
-    }) 
-    .then(data => res.json(data))
-    .catch(err => res.status(400).json(err));
-  });
+
   
   return bookingsController;
 };

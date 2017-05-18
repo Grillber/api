@@ -39,7 +39,7 @@ app.use(cors());
 
 app.use('/auth', authController(dataLoader));
 app.use('/products', productsController(dataLoader));
-app.use('/bookings', authController(dataLoader));
+app.use('/bookings', bookingsController(dataLoader));
 
 
 // Start the server
