@@ -14,7 +14,7 @@ const GrillberDataLoader = require('./lib/grillber_api.js');
 // Controllers
 const authController     = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
-const productsController = require('./controllers/products.js');
+// const productsController = require('./controllers/products.js');
 
 // Database / data loader initialization
 const connection = mysql.createPool({
@@ -36,16 +36,16 @@ app.use(cors({
   "optionsSuccessStatus": 204
 }));
 // app.use(bodyParser.urlencoded({ extended: true }));
-// app.use('/api', router);
-
 
 app.use('/auth', authController(dataLoader));
-app.use('/bookings', bookingsController(dataLoader));
-app.use('/products', productsController(dataLoader));
+// app.use('/products', productsController(dataLoader));
+app.use('/bookings', authController(dataLoader));
 
 // Start the server
 
-const port = process.env.PORT || 1337;//1337;
+
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   if (process.env.C9_HOSTNAME) {
     console.log(`Web server is listening on https://${process.env.C9_HOSTNAME}`);
