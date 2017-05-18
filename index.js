@@ -33,7 +33,12 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
-app.use(cors());
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 
