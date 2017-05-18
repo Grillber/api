@@ -6,6 +6,7 @@ module.exports = (dataLoader) => {
   
   // Retrieve a list of products
   productsController.get('/', (req, res) => {
+      console.log(req.query);
       dataLoader.getAllProduct({
           page: req.query.page,
           limit: req.query.count
@@ -15,15 +16,14 @@ module.exports = (dataLoader) => {
   });
   
   // Return a list of available equipment
-  productsController.get('/availableProducts', (req, res) => {
+  productsController.get('/availableProducts/:date', onlyLoggedIn, (req, res) => {
     dataLoader.getAvailableProduct({
-      date: '2017-05-21 16:00'//req.query.date//
+      date: req.params.date
     })
-    //.then(data => console.log('data produstcController.get', data))
     .then(data => res.status(200).json(data))
-    //.catch(err => res.status(400).jason(err));
+    .catch(err => res.status(400).jason(err));
   });
-  
   return productsController;
 };
+
 
