@@ -36,11 +36,11 @@ app.use(cors());
 
 app.use('/auth', authController(dataLoader));
 app.use('/bookings', bookingsController(dataLoader));
-app.use('/products', productsController(dataLoader));
+// app.use('/products', productsController(dataLoader));
 
 // Start the server
 
-const port = process.env.PORT || 3000;//1337;
+const port = process.env.PORT || 1337;//1337;
 app.listen(port, () => {
   if (process.env.C9_HOSTNAME) {
     console.log(`Web server is listening on https://${process.env.C9_HOSTNAME}`);
