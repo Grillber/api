@@ -29,14 +29,19 @@ const app = express();              //Define app using express
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
-app.use(cors());
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use('/api', router);
 
 
 app.use('/auth', authController(dataLoader));
 app.use('/bookings', bookingsController(dataLoader));
-// app.use('/products', productsController(dataLoader));
+app.use('/products', productsController(dataLoader));
 
 // Start the server
 
