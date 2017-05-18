@@ -18,11 +18,11 @@ module.exports = (dataLoader) => {
 //Create Booking
   bookingsController.post('/new', onlyLoggedIn, (req, res) => {
     dataLoader.createBookings({
+      userId: req.body.userId,
+      productId: req.body.productId,
       dropDate: req.body.dropDate,
       pickUpDate: req.body.pickUpDate,
-      bookingTotal: req.body.bookingTotal,
-      location: req.body.location,
-      status: req.body.status
+      location: req.body.location
     })
      .then(data => res.json(data))
      .catch(err => res.status(400).json(err));
