@@ -20,7 +20,6 @@ module.exports = (dataLoader) => {
   
   //Retrieve previous orders
   bookingsController.get('/', onlyLoggedIn, (req, res) => {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     dataLoader.getAllBookings({
       page: req.query.page,
       limit: req.query.count
