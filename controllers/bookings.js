@@ -5,8 +5,8 @@ module.exports = (dataLoader) => {
   const bookingsController = express.Router();
   
 
-//Create Order
-  bookingsController.post('/', onlyLoggedIn, (req, res) => {
+//Create Booking
+  bookingsController.post('/new', onlyLoggedIn, (req, res) => {
     dataLoader.createBookings({
       dropDate: req.body.dropDate,
       pickUpDate: req.body.pickUpDate,
@@ -20,6 +20,7 @@ module.exports = (dataLoader) => {
   
   //Retrieve previous orders
   bookingsController.get('/', onlyLoggedIn, (req, res) => {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     dataLoader.getAllBookings({
       page: req.query.page,
       limit: req.query.count

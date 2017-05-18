@@ -37,13 +37,11 @@ module.exports = (dataLoader) => {
 
   // Delete a session (logout)
   authController.delete('/sessions', onlyLoggedIn, (req, res) => {
-    if (req.sessionToken === req.body.token) {
-      dataLoader.deleteToken(req.body.token)
+    if (req.sessionToken) {
+      dataLoader.deleteToken(req.sessionToken)
       .then(() => res.status(204).end())
       .catch(err => res.status(400).json(err));
     } else {
-      //console.log(req.sessionToken, "req session token");
-      //console.log(req.body, "req body");
       res.status(401).json({ error: 'Invalid session token' });
     }
   });
@@ -63,7 +61,6 @@ module.exports = (dataLoader) => {
   //   .then(user => res.status(201).json(user))
   //   .catch(err => res.status(400).json(err));
   //   //res.status(500).json({ error: 'not implemented' });
-
   // });
   
 
