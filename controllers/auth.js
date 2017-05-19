@@ -4,7 +4,6 @@ const md5          = require('md5');
 
 module.exports = (dataLoader) => {
   const authController = express.Router();
-  
   // Create a new user (signup)
   authController.post('/users', (req, res) => {
     // console.log(req.body);
@@ -26,6 +25,7 @@ module.exports = (dataLoader) => {
 
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
+        console.log("look for token");
     dataLoader.createTokenFromCredentials(
       req.body.email,
       req.body.password
@@ -45,13 +45,16 @@ module.exports = (dataLoader) => {
     }
   });
 
+
   //Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
     //console.log(req.body, "look for token");
     dataLoader.getUserFromSession(req.sessionToken)
+
     .then(user => res.status(201).json(user))
     .catch(err => res.status(400).json(err));
     //res.status(500).json({ error: 'not implemented' });
   });
+
   return authController;
 };
