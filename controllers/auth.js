@@ -23,7 +23,6 @@ module.exports = (dataLoader) => {
       return res.status(400).json(err)});
   });
 
-
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
         console.log("look for token");
@@ -34,7 +33,6 @@ module.exports = (dataLoader) => {
     .then(token => res.status(201).json({ token: token }))
     .catch(err => res.status(401).json(err));
   });
-
 
   // Delete a session (logout)
   authController.delete('/sessions', onlyLoggedIn, (req, res) => {
@@ -48,14 +46,11 @@ module.exports = (dataLoader) => {
   });
 
 
-  // Retrieve current user
+  //Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
+    //console.log(req.body, "look for token");
     dataLoader.getUserFromSession(req.sessionToken)
-    .then((user) => { 
-      console.log(user);
-      return user;
-      } 
-    )
+
     .then(user => res.status(201).json(user))
     .catch(err => res.status(400).json(err));
     //res.status(500).json({ error: 'not implemented' });
