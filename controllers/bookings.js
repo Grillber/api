@@ -28,6 +28,14 @@ module.exports = (dataLoader) => {
      .catch(err => res.status(400).json(err));
   });
   
+//Retrieves single booking by Id
+  bookingsController.get('/:id', onlyLoggedIn, (req, res) => {
+    dataLoader.getSingleBooking({
+      id: req.params.id
+    })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(400).json(err))
+  });
 
   
   return bookingsController;
