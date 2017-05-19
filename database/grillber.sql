@@ -40,7 +40,7 @@ CREATE TABLE  bookings (
   dropDate TIMESTAMP NULL DEFAULT NULL,
   pickUpDate TIMESTAMP,
   bookingTotal DECIMAL(13,2),
-  location VARCHAR(50),
+  location VARCHAR(100),
   status ENUM('opened', 'payed', 'delivered', 'pickedUp', 'closed') DEFAULT 'opened'
 );
 
