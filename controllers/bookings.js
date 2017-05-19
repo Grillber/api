@@ -7,12 +7,13 @@ module.exports = (dataLoader) => {
 
 //Create Booking
   bookingsController.post('/new', onlyLoggedIn, (req, res) => {
+    console.log('asdfadgf')
     dataLoader.createBookings({
+      productId: req.body.productId,
+      userId: req.body.userId,
       dropDate: req.body.dropDate,
       pickUpDate: req.body.pickUpDate,
-      bookingTotal: req.body.bookingTotal,
       location: req.body.location,
-      status: req.body.status
     })
      .then(data => res.json(data))
      .catch(err => res.status(400).json(err));

@@ -14,7 +14,7 @@ const GrillberDataLoader = require('./lib/grillber_api.js');
 // Controllers
 const authController     = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
-// const productsController = require('./controllers/products.js');
+const productsController = require('./controllers/products.js');
 
 // Database / data loader initialization
 const connection = mysql.createPool({
@@ -38,7 +38,7 @@ app.use(cors({
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth', authController(dataLoader));
-// app.use('/products', productsController(dataLoader));
+app.use('/products', productsController(dataLoader));
 app.use('/bookings', authController(dataLoader));
 
 // Start the server
