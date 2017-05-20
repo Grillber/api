@@ -19,7 +19,6 @@ const authController     = require('./controllers/auth.js');
 const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
 
-
 // Database / data loader initialization
 const connection = mysql.createPool({
   user: 'root',
@@ -40,7 +39,6 @@ app.use(cors({
   "optionsSuccessStatus": 204
 }));
 // app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.use('/auth', authController(dataLoader));
 app.use('/products', productsController(dataLoader));
