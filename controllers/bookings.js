@@ -15,9 +15,9 @@ module.exports = (dataLoader) => {
   }); 
   
   //Retrieve bookings from session token
-  bookingsController.get('/:token', onlyLoggedIn, (req, res) => {
-    dataLoader.getBookingsFromSession(req.params.token)
-    .then((data) => {console.log(data);res.status(200).json(data)});
+  bookingsController.get('/:id', onlyLoggedIn, (req, res) => {
+    dataLoader.getBookingsFromSession(req.params.id)
+    .then((data) => res.status(200).json(data));
   });
 
   //Create Booking
