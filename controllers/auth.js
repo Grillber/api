@@ -18,14 +18,13 @@ module.exports = (dataLoader) => {
     .catch(function(err){ 
       // Special error handling for duplicate entry
       if(err.code === 'ER_DUP_ENTRY'){
-        res.status(400).json('That email already exists')
+        res.status(400).json('That email already exists');
       }
       return res.status(400).json(err)});
   });
 
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
-        console.log("look for token");
     dataLoader.createTokenFromCredentials(
       req.body.email,
       req.body.password
