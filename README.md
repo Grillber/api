@@ -9,4 +9,11 @@ Here's a quick rundown of what Grillber's API contains:
 * `grillber.sql` has a CREATE TABLE statement that will lay the foundations for your database.
 * `index.js` has all of our middleware, our express.js initialization, and starts our server!
 * `grillber_api.js` consists of a set of methods that will retrieve/post/delete information from the database.
+* `/controllers` contains our `auth.js`, `bookings.js`, and `products.js` controllers which set the endpoints for our methods.
+
+## Controllers
+
+# `auth.js`
+
+
 
