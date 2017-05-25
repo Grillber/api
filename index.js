@@ -20,10 +20,15 @@ const bookingsController = require('./controllers/bookings.js');
 const productsController = require('./controllers/products.js');
 
 // Database / data loader initialization
-const connection = mysql.createPool({
-  user: 'root',
-  database: 'grillber'
-});
+let connection;
+if(process.env.JAWSDB_URL){
+  connection = mysql.createPool(process.env.JAWSDB_URL)
+} else {
+  connection = mysql.createPool({
+    user: 'root',
+    database: 'grillber'
+  });
+}
 const dataLoader = new GrillberDataLoader(connection);
 
 
