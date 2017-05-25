@@ -11,9 +11,15 @@ Here's a quick rundown of what Grillber's API contains:
 * `grillber_api.js` consists of a set of methods that will retrieve/post/delete information from the database.
 * `/controllers` contains our `auth.js`, `bookings.js`, and `products.js` controllers which set the endpoints for our methods.
 
-## Controllers
+## /controllers
 
 # `auth.js`
 
+The authorization controller handles our user creation, log in, and log out methods. It checks if the current user has a token in our database, then 
+proceeds to our next endpoints.
+
+#`bookings.js`
+
+The bookings controller handles 
 
 

@@ -45,7 +45,6 @@ module.exports = (dataLoader) => {
     }
   });
 
-
   //Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
     //console.log(req.body, "look for token");

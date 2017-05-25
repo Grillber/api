@@ -14,7 +14,6 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });   
 
-
 //Create Booking
   bookingsController.post('/new', onlyLoggedIn, (req, res) => {
     dataLoader.createBookings({
@@ -37,6 +36,5 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err))
   });
 
-  
   return bookingsController;
 };
