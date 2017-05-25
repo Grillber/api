@@ -18,14 +18,13 @@ module.exports = (dataLoader) => {
     .catch(function(err){ 
       // Special error handling for duplicate entry
       if(err.code === 'ER_DUP_ENTRY'){
-        res.status(400).json('That email already exists')
+        res.status(400).json('That email already exists');
       }
       return res.status(400).json(err)});
   });
 
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
-        console.log("look for token");
     dataLoader.createTokenFromCredentials(
       req.body.email,
       req.body.password
@@ -47,12 +46,9 @@ module.exports = (dataLoader) => {
 
   //Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
-    //console.log(req.body, "look for token");
     dataLoader.getUserFromSession(req.sessionToken)
-
     .then(user => res.status(201).json(user))
     .catch(err => res.status(400).json(err));
-    //res.status(500).json({ error: 'not implemented' });
   });
 
   return authController;
