@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "ExpressJS and MySQL-based API for renting grill equipment.",
   "main": "index.js",
-    "engines": {
-    "node": "10.15.0"
-  },
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js"
